@@ -54,8 +54,5 @@ export default async function getTopPosts(username) {
     )} | <a href="https://news.ycombinator.com/item?id=${objectID}">${num_comments} comments</a>`;
   });
 
-  posts.unshift(headline);
-  posts = posts.join('\n\n');
-
-  return posts;
+  return [headline, ...posts].join('\n\n');
 }
