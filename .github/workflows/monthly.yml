@@ -1,0 +1,21 @@
+name: Hacker News Monthly Top
+
+on:
+  schedule:
+    - cron: '1 0 1 * *'
+
+jobs:
+  fetch-monthly-top-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.x
+      - name: Install dependencies
+        run: npm install
+      - name: Fetch posts
+        run: npm run monthly
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN}}

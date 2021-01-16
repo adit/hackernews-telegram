@@ -1,0 +1,31 @@
+{
+  "name": "hacker-news",
+  "version": "0.0.1",
+  "description": "Hacker News Headline",
+  "type": "module",
+  "main": "./src/index.js",
+  "scripts": {
+    "daily": "node ./src/index.js \"@daily_hackernews\"",
+    "weekly": "node ./src/index.js \"@weekly_hackernews\"",
+    "monthly": "node ./src/index.js \"@monthly_hackernews\""
+  },
+  "keywords": [
+    "hacker",
+    "news",
+    "telegram",
+    "bot"
+  ],
+  "author": "Aditya Phra",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adit/hackernews-telegram"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.3",
+    "dedent": "^0.7.0",
+    "telegraf": "^4.0.1",
+    "timeago.js": "^4.0.2"
+  }
+}
