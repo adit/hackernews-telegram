@@ -1,12 +1,19 @@
-import { Telegraf } from 'telegraf';
+import axios from 'axios';
 
 export default async function sendMessage({ token, chatId, content }) {
-  console.log('send to telegram');
+  try {
+    console.log('send to telegram');
 
-  const bot = new Telegraf(token);
+    const apiUrl = `https://api.telegram.org/bot${token}/sendMessage`;
+    const data = {
+      chat_id: chatId,
+      text: content,
+      parse_mode: 'HTML',
+      disable_web_page_preview: true,
+    };
 
-  await bot.telegram.sendMessage(chatId, content, {
-    parse_mode: 'HTML',
-    disable_web_page_preview: true,
-  });
+    await axios.post(apiUrl, data);
+  } catch (err) {
+    throw new Error(err.response?.data.description) || err;
+  }
 }
